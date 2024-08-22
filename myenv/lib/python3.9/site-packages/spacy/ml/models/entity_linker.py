@@ -1,16 +1,31 @@
 from pathlib import Path
-from typing import Optional, Callable, Iterable, List, Tuple
-from thinc.types import Floats2d
-from thinc.api import chain, list2ragged, reduce_mean, residual
-from thinc.api import Model, Maxout, Linear, tuplify, Ragged
+from typing import Callable, Iterable, List, Optional, Tuple
 
-from ...util import registry
-from ...kb import KnowledgeBase, InMemoryLookupKB
-from ...kb import Candidate, get_candidates, get_candidates_batch
-from ...vocab import Vocab
-from ...tokens import Span, Doc
-from ..extract_spans import extract_spans
+from thinc.api import (
+    Linear,
+    Maxout,
+    Model,
+    Ragged,
+    chain,
+    list2ragged,
+    reduce_mean,
+    residual,
+    tuplify,
+)
+from thinc.types import Floats2d
+
 from ...errors import Errors
+from ...kb import (
+    Candidate,
+    InMemoryLookupKB,
+    KnowledgeBase,
+    get_candidates,
+    get_candidates_batch,
+)
+from ...tokens import Doc, Span
+from ...util import registry
+from ...vocab import Vocab
+from ..extract_spans import extract_spans
 
 
 @registry.architectures("spacy.EntityLinker.v2")
@@ -87,6 +102,14 @@ def load_kb(
         return kb
 
     return kb_from_file
+
+
+@registry.misc("spacy.EmptyKB.v2")
+def empty_kb_for_config() -> Callable[[Vocab, int], KnowledgeBase]:
+    def empty_kb_factory(vocab: Vocab, entity_vector_length: int):
+        return InMemoryLookupKB(vocab=vocab, entity_vector_length=entity_vector_length)
+
+    return empty_kb_factory
 
 
 @registry.misc("spacy.EmptyKB.v1")
