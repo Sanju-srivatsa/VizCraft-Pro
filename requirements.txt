@@ -3,4 +3,5 @@ pandas
 plotly
 streamlit
 openpyxl
+ydata_profiling
 streamlit_pandas_profiling
