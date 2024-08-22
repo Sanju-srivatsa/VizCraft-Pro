@@ -4,6 +4,5 @@ streamlit==1.37.1
 openpyxl==3.1.5
 ydata_profiling==4.7.0
 visions==0.7.5
-pydantic<1.11.0,>=1.7.4
+pydantic>=2.0.0
 streamlit-pandas-profiling
-
