@@ -1,8 +1,5 @@
 pandas
 plotly
 streamlit
-openpyxl
 ydata_profiling
-visions
-pydantic
 streamlit-pandas-profiling
