@@ -7,7 +7,7 @@ from streamlit_pandas_profiling import st_profile_report
 
 # Set the configuration for the Streamlit page and theme
 st.set_page_config(
-    page_title='VizCraft',  # Title of the web page
+    page_title='VizCraft Pro',  # Title of the web page
     page_icon='🗿',  # Icon for the web page
     layout="wide"
 )
@@ -31,10 +31,10 @@ st.markdown("""
 
 # Sidebar for file upload or example dataset
 with st.sidebar:
-    st.title("VizCraft")
+    st.title("VizCraft Pro")
     st.subheader("Data is Everything")
     st.markdown(
-        """VizCraft is a powerful and user-friendly web application built with Streamlit that allows you to upload, explore, 
+        """VizCraft Pro is a powerful and user-friendly web application built with Streamlit that allows you to upload, explore, 
         analyze, and visualize datasets in CSV and Excel formats. This tool is ideal for data analysts, scientists, and anyone 
         interested in gaining insights from their data quickly and easily."""
     )
@@ -45,7 +45,7 @@ with st.sidebar:
     """)
 
 # Display the title and subtitle of the web app
-st.title('VizCraft: Interactive Data Navigator')
+st.title('VizCraft Pro: Interactive Data Navigator')
 st.subheader('Explore, Analyze, and Visualize All in One Place.')
 
 # Add spacing between title and file uploader
