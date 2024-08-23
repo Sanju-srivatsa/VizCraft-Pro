@@ -1,7 +1,5 @@
-pandas
-plotly
-streamlit
-openpyxl
-ydata_profiling
-setuptools
-streamlit_pandas_profiling
+pandas>=1.1.0
+plotly>=5.0.0
+streamlit>=1.0.0
+visions==0.7.5
+ydata-profiling>=4.7.0
