@@ -37,6 +37,8 @@ with st.sidebar:
         analyze, and visualize datasets in CSV and Excel formats. This tool is ideal for data analysts, scientists, and anyone 
         interested in gaining insights from their data quickly and easily."""
     )
+    #st.header("EAD Functionalities")
+    #st.success("Connected ", icon="💚")
     st.sidebar.markdown("""
     [Example CSV input file](https://raw.githubusercontent.com/Sanju-srivatsa/VizCraft-Data-Science-App/main/titanic.csv)
     """)
@@ -47,6 +49,8 @@ st.subheader('Explore, Analyze, and Visualize All in One Place.')
 
 # Add spacing between title and file uploader
 st.markdown("---")  # Horizontal rule for separation
+
+
 
 # Initialize the `data` variable and the `is_example` flag
 data = None
@@ -85,8 +89,25 @@ if data is not None:
     with main_tab1:
         st.subheader('Pandas Profiling Report')
         with st.spinner('Generating Pandas Profiling Report...'):
-            pr = ProfileReport(data, explorative=True, progress_bar=False)  # Disable progress bar
-            st.write(pr.to_streamlit())  # Use to_streamlit for better compatibility
+            pr = ProfileReport(data,
+                               sort=None,
+                                html={
+                                    "style": {"full_width": True}
+                                }, 
+                                progress_bar=False,
+                                correlations={
+                                    "auto": {"calculate": True},
+                                    "pearson": {"calculate": False},
+                                    "spearman": {"calculate": False},
+                                    "kendall": {"calculate": False},
+                                    "phi_k": {"calculate": True},
+                                    "cramers": {"calculate": True},
+                                },
+                                explorative=True,
+                                title="Profiling Report"
+                            )
+            pr_html = pr.to_html()
+            st.components.v1.html(pr_html, height=1000, scrolling=True)
 
     # Tab 2: Basic Info About the Dataset
     with main_tab2:
@@ -208,3 +229,4 @@ if data is not None:
                         path = st.multiselect('Choose your Path', options=list(result.columns))
                         fig = px.sunburst(data_frame=result, path=path, values='Result')
                         st.plotly_chart(fig)
+
