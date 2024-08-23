@@ -37,8 +37,6 @@ with st.sidebar:
         analyze, and visualize datasets in CSV and Excel formats. This tool is ideal for data analysts, scientists, and anyone 
         interested in gaining insights from their data quickly and easily."""
     )
-    #st.header("EAD Functionalities")
-    #st.success("Connected ", icon="💚")
     st.sidebar.markdown("""
     [Example CSV input file](https://raw.githubusercontent.com/Sanju-srivatsa/VizCraft-Data-Science-App/main/titanic.csv)
     """)
@@ -87,9 +85,8 @@ if data is not None:
     with main_tab1:
         st.subheader('Pandas Profiling Report')
         with st.spinner('Generating Pandas Profiling Report...'):
-            pr = ProfileReport(data, explorative=True)
-            pr_html = pr.to_html()
-            st.components.v1.html(pr_html, height=1000, scrolling=True)
+            pr = ProfileReport(data, explorative=True, progress_bar=False)  # Disable progress bar
+            st.write(pr.to_streamlit())  # Use to_streamlit for better compatibility
 
     # Tab 2: Basic Info About the Dataset
     with main_tab2:
