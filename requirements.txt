@@ -3,3 +3,4 @@ plotly
 streamlit
 openpyxl
 ydata_profiling
+setuptools
