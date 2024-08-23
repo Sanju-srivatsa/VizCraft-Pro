@@ -90,8 +90,7 @@ if data is not None:
         st.subheader('Pandas Profiling Report')
         with st.spinner('Generating Pandas Profiling Report...'):
             pr = ProfileReport(data, explorative=True)
-            pr_html = pr.to_html()
-            st.components.v1.html(pr_html, height=1000, scrolling=True)
+            st.write(pr.to_streamlit())
 
     # Tab 2: Basic Info About the Dataset
     with main_tab2:
