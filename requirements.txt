@@ -4,4 +4,3 @@ streamlit
 openpyxl
 ydata_profiling
 setuptools
-streamlit_pandas_profiling
