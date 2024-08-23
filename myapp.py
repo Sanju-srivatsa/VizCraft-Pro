@@ -82,32 +82,10 @@ if data is not None:
     st.markdown("---")
 
     # Create main tabs for the different sections
-    main_tab1, main_tab2, main_tab3, main_tab4 = st.tabs(
-        ['Pandas Profiling Report', 'Dataset Overview', 'Columns Values to Count', 'Groupby: Simplify Your Data Analysis'])
+    main_tab2, main_tab3, main_tab4 = st.tabs(
+        [ 'Dataset Overview', 'Columns Values to Count', 'Groupby: Simplify Your Data Analysis'])
 
-    # Tab 1: Pandas Profiling Report
-    with main_tab1:
-        st.subheader('Pandas Profiling Report')
-        with st.spinner('Generating Pandas Profiling Report...'):
-            pr = ProfileReport(data,
-                               sort=None,
-                                html={
-                                    "style": {"full_width": True}
-                                }, 
-                                progress_bar=False,
-                                correlations={
-                                    "auto": {"calculate": True},
-                                    "pearson": {"calculate": False},
-                                    "spearman": {"calculate": False},
-                                    "kendall": {"calculate": False},
-                                    "phi_k": {"calculate": True},
-                                    "cramers": {"calculate": True},
-                                },
-                                explorative=True,
-                                title="Profiling Report"
-                            )
-            pr_html = pr.to_html()
-            st.components.v1.html(pr_html, height=1000, scrolling=True)
+
 
     # Tab 2: Basic Info About the Dataset
     with main_tab2:
