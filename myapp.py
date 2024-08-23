@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from ydata_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
 
 # Set the configuration for the Streamlit page and theme
 st.set_page_config(
@@ -90,8 +91,7 @@ if data is not None:
         st.subheader('Pandas Profiling Report')
         with st.spinner('Generating Pandas Profiling Report...'):
             pr = ProfileReport(data, explorative=True)
-            pr_html = pr.to_html()
-            st.components.v1.html(pr_html, height=1000, scrolling=True)
+            st_profile_report(pr)
 
     # Tab 2: Basic Info About the Dataset
     with main_tab2:
