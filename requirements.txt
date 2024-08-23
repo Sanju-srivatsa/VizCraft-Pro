@@ -1,7 +1,5 @@
 pandas
-plotly.express
+plotly
 streamlit
 openpyxl
 ydata_profiling
-visions
-streamlit_pandas_profiling
