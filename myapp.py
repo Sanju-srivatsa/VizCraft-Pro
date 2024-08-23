@@ -50,8 +50,6 @@ st.subheader('Explore, Analyze, and Visualize All in One Place.')
 # Add spacing between title and file uploader
 st.markdown("---")  # Horizontal rule for separation
 
-
-
 # Initialize the `data` variable and the `is_example` flag
 data = None
 is_example = False
@@ -90,7 +88,8 @@ if data is not None:
         st.subheader('Pandas Profiling Report')
         with st.spinner('Generating Pandas Profiling Report...'):
             pr = ProfileReport(data, explorative=True)
-            st.write(pr.to_streamlit())
+            pr_html = pr.to_html()
+            st.components.v1.html(pr_html, height=1000, scrolling=True)
 
     # Tab 2: Basic Info About the Dataset
     with main_tab2:
